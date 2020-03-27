@@ -1,16 +1,7 @@
-FROM node
+FROM alpine
 
-RUN apt-get update && apt-get upgrade -y \
-    && apt-get clean
+# the executable
+ENTRYPOINT ["sleep"]
 
-RUN mkdir /app
-WORKDIR /app
-
-COPY package.json /app/
-RUN npm install --only=production
-
-COPY src /app/src
-
-EXPOSE 3000
-
-CMD [ "npm", "start" ]
+# the default arguments
+CMD ["10000"]
